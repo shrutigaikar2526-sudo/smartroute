@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartRoute - Panvel to Alibag</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f7fb;
+            color: #1f2937;
+        }
+
+        header {
+            background: #1769aa;
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .route {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+
+        .route h2 {
+            margin-bottom: 10px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 22px;
+            border-radius: 15px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
+
+        .card h3 {
+            margin-bottom: 12px;
+        }
+
+        .time {
+            font-size: 26px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .status {
+            font-weight: bold;
+        }
+
+        .on-time {
+            color: green;
+        }
+
+        .delayed {
+            color: orange;
+        }
+
+        .high {
+            color: red;
+        }
+
+        .buttons {
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        button {
+            border: none;
+            padding: 16px;
+            border-radius: 10px;
+            background: #1769aa;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #0d4f80;
+        }
+
+        .info {
+            margin-top: 25px;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+            display: none;
+        }
+
+        footer {
+            margin-top: 40px;
+            background: #17202a;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🚌 SMARTROUTE</h1>
+    <p>Smart Public Transportation System</p>
+</header>
+
+<div class="container">
+
+    <div class="route">
+        <h2>📍 Panvel → Alibag</h2>
+        <p>Real-time public transport information</p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <h3>🚌 Next Bus</h3>
+            <div class="time">8:30 PM</div>
+            <p class="status on-time">● On Time</p>
+            <p>Panvel → Alibag</p>
+        </div>
+
+        <div class="card">
+            <h3>🚌 Next Bus</h3>
+            <div class="time">8:50 PM</div>
+            <p class="status delayed">● Delayed 15 min</p>
+            <p>Panvel → Alibag</p>
+        </div>
+
+        <div class="card">
+            <h3>👥 Crowd Level</h3>
+            <div class="time high">HIGH</div>
+            <p>Estimated passengers: 48 / 50</p>
+        </div>
+
+    </div>
+
+    <div class="buttons">
+
+        <button onclick="showInfo('live')">
+            📍 Live Bus
+        </button>
+
+        <button onclick="showInfo('demand')">
+            🤖 Demand Prediction
+        </button>
+
+        <button onclick="showInfo('lastbus')">
+            🌙 After Last Bus
+        </button>
+
+        <button onclick="showInfo('accessibility')">
+            📢 Accessibility
+        </button>
+
+    </div>
+
+    <div id="info" class="info"></div>
+
+</div>
+
+<footer>
+    <p>UNSDG 11 – Sustainable Cities and Communities</p>
+    <p>Target 11.2 – Accessible and Sustainable Transport</p>
+</footer>
+
+<script>
+
+function showInfo(type) {
+
+    const info = document.getElementById("info");
+
+    info.style.display = "block";
+
+    if (type === "live") {
+
+        info.innerHTML = `
+            <h2>📍 Live Bus Information</h2>
+            <br>
+            <p><b>Bus:</b> MH-04-1234</p>
+            <p><b>Route:</b> Panvel → Alibag</p>
+            <p><b>Current Location:</b> Pen</p>
+            <p><b>Estimated Arrival:</b> 25 minutes</p>
+        `;
+
+    }
+
+    if (type === "demand") {
+
+        info.innerHTML = `
+            <h2>🤖 Passenger Demand Prediction</h2>
+            <br>
+            <p><b>Current Demand:</b> High</p>
+            <p><b>Expected Passengers:</b> 85</p>
+            <p><b>Recommendation:</b> Additional bus recommended.</p>
+        `;
+
+    }
+
+    if (type === "lastbus") {
+
+        info.innerHTML = `
+            <h2>🌙 After Last Bus</h2>
+            <br>
+            <p>Regular bus service has ended.</p>
+            <br>
+            <p><b>Shared Shuttle:</b> Available</p>
+            <p><b>Departure:</b> 9:30 PM</p>
+            <p><b>Seats:</b> 8 / 12 available</p>
+            <p><b>Estimated Fare:</b> ₹50</p>
+        `;
+
+    }
+
+    if (type === "accessibility") {
+
+        info.innerHTML = `
+            <h2>📢 Accessible Transport Information</h2>
+            <br>
+            <p>
+                Passengers without smartphones can receive the same
+                information through digital displays and voice
+                announcements at bus stops.
+            </p>
+            <br>
+            <p><b>Goal:</b> Make public transportation accessible to everyone.</p>
+        `;
+    }
+}
+
+</script>
+
+</body>
+</html>
