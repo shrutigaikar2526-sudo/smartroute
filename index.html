@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="RouteWise: a public transport journey planner for Panvel and Alibag.">
+  <title>RouteWise | Panvel–Alibag</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div class="logo">R</div>
+      <div>
+        <h1>RouteWise</h1>
+        <p>Smarter journeys, better communities</p>
+      </div>
+      <span class="sdg">UN SDG 11</span>
+    </header>
+
+    <section class="hero">
+      <p class="eyebrow">PANVEL ↔ ALIBAG</p>
+      <h2>Your journey, made easier.</h2>
+      <p>Explore sample bus schedules and view your journey on an interactive map.</p>
+    </section>
+
+    <section class="panel">
+      <h2>Plan your journey</h2>
+      <div class="form-grid">
+        <label>From
+          <select id="from">
+            <option>Panvel</option>
+            <option>Alibag</option>
+          </select>
+        </label>
+        <button id="swapRoute" class="swap" type="button" aria-label="Swap route">⇄</button>
+        <label>To
+          <select id="to">
+            <option>Alibag</option>
+            <option>Panvel</option>
+          </select>
+        </label>
+        <label>Departure period
+          <select id="period">
+            <option value="all">All day</option>
+            <option value="morning">Morning</option>
+            <option value="afternoon">Afternoon</option>
+            <option value="evening">Evening</option>
+          </select>
+        </label>
+      </div>
+      <button id="search" class="primary" type="button">Find buses</button>
+      <p class="note">Demonstration project: bus times, statuses and journey durations are sample data, not verified official schedules.</p>
+    </section>
+
+    <section class="stats">
+      <article class="stat"><span>Next sample departure</span><strong id="nextTime">--</strong></article>
+      <article class="stat"><span>Time remaining</span><strong id="countdown">--</strong></article>
+      <article class="stat"><span>Buses shown</span><strong id="total">0</strong></article>
+      <article class="stat"><span>Last sample departure</span><strong id="lastTime">--</strong></article>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <div>
+          <h2>Available buses</h2>
+          <p class="muted" id="routeLabel">Panvel to Alibag</p>
+        </div>
+        <span class="tag">SAMPLE DATA</span>
+      </div>
+      <div id="busList" class="bus-list"></div>
+      <p id="emptyMessage" hidden>No buses match this period.</p>
+    </section>
+
+    <section class="panel">
+      <h2>📍 Location and route map</h2>
+      <p class="muted">View Panvel and Alibag on the map or choose to share your device location.</p>
+      <button id="locateMe" class="primary" type="button">Use My Location</button>
+      <button id="stopLocation" class="secondary" type="button" disabled>Stop location sharing</button>
+      <p id="locationStatus" class="muted" role="status">Location sharing is off.</p>
+      <div id="routeMap" aria-label="Map of Panvel and Alibag"></div>
+      <p class="note">The dashed line is illustrative, not a verified road route. Device location is not live bus tracking.</p>
+    </section>
+
+    <section class="panel">
+      <h2>Journey details</h2>
+      <div id="journeyDetails">
+        <p class="muted">Select View details on a bus to see more information.</p>
+      </div>
+    </section>
+
+    <footer>
+      <p>RouteWise · Panvel–Alibag · UN Sustainable Development Goal 11</p>
+      <p>Student project demonstrating accessible transport information.</p>
+    </footer>
+  </main>
+</body>
+</html>
